@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.1.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'us-population-web'
+    version =  '0.0.1'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.5.0-beta-1'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    testCompile 'junit:junit'
+}
+
+compileJava.dependsOn(processResources)
+
+springBoot {
+    mainClass = 'com.cosmos.UsZipApp'
+}
+
